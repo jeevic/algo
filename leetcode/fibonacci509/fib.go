@@ -40,7 +40,7 @@ func FibMem(n int) int {
 
 func helper(memArr []int, n int) int {
 	if n == 0 || n == 1 {
-		return 1
+		return n
 	}
 	if memArr[n] != 0 {
 		return memArr[n]
@@ -74,7 +74,10 @@ func FibCompress(n int) int {
 	if n < 1 {
 		return 0
 	}
-	var prev int = 1
+	if n == 0 || n == 1 {
+		return n
+	}
+	var prev int = 0
 	var cur int = 1
 	var sum int
 
