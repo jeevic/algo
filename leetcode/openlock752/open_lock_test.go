@@ -29,3 +29,14 @@ func TestOpenLock(t *testing.T) {
 		}
 	}
 }
+
+func TestDoubleDirectionOpenLock(t *testing.T) {
+	for _, q := range qs {
+		step := DoubleDirectionOpenLock(q.Input.Deadends, q.Input.Target)
+		if step == q.Output {
+			t.Logf("input:%v output:%d match step:%d", q.Input, q.Output, step)
+		} else {
+			t.Errorf("[error]input:%v output:%d not match step:%d", q.Input, q.Output, step)
+		}
+	}
+}
