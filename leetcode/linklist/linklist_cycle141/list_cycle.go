@@ -1,4 +1,4 @@
-package list_cycle141
+package linklist_cycle141
 
 type ListNode struct {
 	Val  int
