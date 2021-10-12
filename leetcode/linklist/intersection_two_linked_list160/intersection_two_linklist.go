@@ -42,6 +42,38 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
 	return p3
 }
 
+func getIntersectionNode2(headA, headB *ListNode) *ListNode {
+	p1, p2 := headA, headB
+	p1Sign, p2Sign := false, false
+	for p1 != p2 {
+		if p1 == nil {
+			if p1Sign == false {
+				p1Sign = true
+				p1 = headB
+			} else {
+				break
+			}
+		} else {
+			p1 = p1.Next
+		}
+		if p2 == nil {
+			if p2Sign == false {
+				p2Sign = true
+				p2 = headA
+			} else {
+				break
+			}
+		} else {
+			p2 = p2.Next
+		}
+	}
+	if p1 == p2 && p1 != nil {
+		return p1
+	}
+
+	return nil
+}
+
 func CycleLength(head *ListNode) int {
 	p1, p2 := head, head.Next
 	length := 0

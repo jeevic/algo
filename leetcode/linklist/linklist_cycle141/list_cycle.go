@@ -18,7 +18,7 @@ func hasCycle(head *ListNode) bool {
 		return false
 	}
 	p1, p2 := head, head
-	for p1 != nil && p2 != nil && p1.Next != nil && p2.Next != nil && p2.Next.Next != nil {
+	for p2 != nil && p2.Next != nil {
 		p1 = p1.Next
 		p2 = p2.Next.Next
 		if p1 == p2 {
@@ -51,10 +51,33 @@ func detectCycle(head *ListNode) *ListNode {
 
 }
 
+//解法2
+func detectCycle2(head *ListNode) *ListNode {
+	p1, p2 := head, head
+	for p2 != nil && p2.Next != nil {
+		p1 = p1.Next
+		p2 = p2.Next.Next
+		if p1 == p2 {
+			break
+		}
+	}
+
+	if p2 == nil || p2.Next == nil {
+		return nil
+	}
+
+	p2 = head
+	for p1 != p2 {
+		p1 = p1.Next
+		p2 = p2.Next
+	}
+	return p1
+}
+
 func CycleLength(head *ListNode) int {
 	p1, p2 := head, head.Next
 	length := 0
-	for p1 != nil && p2 != nil && p1.Next != nil && p2.Next != nil && p2.Next.Next != nil {
+	for p2 != nil && p2.Next != nil && p2.Next.Next != nil {
 		if p1 == p2 {
 			return length
 		}
@@ -65,6 +88,7 @@ func CycleLength(head *ListNode) int {
 	return -1
 }
 
+//连个
 func FindCycleNode(head *ListNode, k int) *ListNode {
 	//k点
 	p1, p2 := head, head
