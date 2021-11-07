@@ -1,5 +1,8 @@
 package permutationInString576
 
+//@see https://leetcode-cn.com/problems/permutation-in-string/
+//567. 字符串的排列
+
 func checkInclusion(s1 string, s2 string) bool {
 	s1len, s2len := len(s1), len(s2)
 	if s1len <= 0 || s2len <= 0 {
