@@ -23,3 +23,25 @@ class Solution:
                 return cur
             cur = cur.parent
         return None
+
+
+"""
+链表相交思路
+"""
+
+
+class Solution:
+
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        i = p
+        j = q
+        while i.val != j.val:
+            i = i.parent
+            j = j.parent
+
+            if i is None:
+                i = q
+            if j is None:
+                j = p
+
+        return i

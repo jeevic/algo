@@ -58,7 +58,7 @@ class Solution:
  子问题解决思路
 """
 
-class Solution:
+class Solution2:
     ancestor = None
 
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
@@ -81,3 +81,34 @@ class Solution:
             if self.ancestor is None:
                 self.ancestor = root
         return left
+
+
+
+
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution3:
+    ancestor = None
+
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        return self.find(root, p.val, q.val)
+
+    def find(self, root, val1, val2):
+        if root is None:
+            return None
+
+        if root.val == val1 or root.val == val2:
+            return root
+
+        left = self.find(root.left, val1, val2)
+        right = self.find(root.right, val1, val2)
+
+        if left is not None and right is not None:
+            return root
+
+        return left if right is None else right

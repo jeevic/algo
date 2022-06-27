@@ -26,3 +26,29 @@ class Solution:
                 self.ancestor = root
 
         return left
+
+"""
+遍历 子问题
+"""
+
+class Solution1:
+
+    def lowestCommonAncestor(self, root: 'TreeNode', nodes: 'List[TreeNode]') -> 'TreeNode':
+        nodes_map = {}
+        for node in nodes:
+            nodes_map[node.val] = True
+        return self.find(root, nodes_map)
+
+    def find(self, root, np):
+        if root is None:
+            return None
+
+        if np.get(root.val, False):
+            return root
+
+        left = self.find(root.left, np)
+        right = self.find(root.right, np)
+
+        if left is not None and right is not None:
+            return root
+        return left if left is not None else right
