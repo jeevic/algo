@@ -1,6 +1,8 @@
 """
 516. 最长回文子序列
 @see https://leetcode.cn/problems/longest-palindromic-subsequence/
+
+教程: https://blog.csdn.net/xunbaobao123/article/details/115369579
 """
 
 
