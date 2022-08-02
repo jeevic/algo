@@ -27,8 +27,8 @@ class Solution:
             return self.mem[(i, j)]
 
         if s[i] == p[j] or p[j] == ".":
-            if j < len(p) - 1 and p[ j +1] == "*":
-                res = self.dp(s, i + 1, p, j) or  self.dp(s, i, p, j+ 2)
+            if j < len(p) - 1 and p[j + 1] == "*":
+                res = self.dp(s, i + 1, p, j) or self.dp(s, i, p, j + 2)
             else:
                 res = self.dp(s, i + 1, p, j + 1)
         else:
