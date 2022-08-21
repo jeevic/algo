@@ -4,6 +4,10 @@
 """
 from typing import List
 
+"""
+DFS遍历算法
+"""
+
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
@@ -38,3 +42,36 @@ class Solution:
         self.onPath[s] = False
 
         return
+
+
+"""
+BFS 算法
+"""
+
+
+class Solution1:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+
+        indegree = [0 for _ in range(numCourses)]
+        graph = [[] for _ in range(numCourses)]
+
+        for requisite in prerequisites:
+            graph[requisite[1]].append(requisite[0])
+            indegree[requisite[0]] += 1
+
+        queue = []
+        count = 0
+        for course in range(numCourses):
+            if indegree[course] == 0:
+                queue.append(course)
+
+        while len(queue) > 0:
+            cur = queue.pop(0)
+            count += 1
+
+            for next in graph[cur]:
+                indegree[next] -= 1
+                if indegree[next] == 0:
+                    queue.append(next)
+
+        return True if count == numCourses else False
