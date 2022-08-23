@@ -1,28 +1,32 @@
 """
-785. 判断二分图
-"""
-
-"""
-DFS 版本
+886. 可能的二分法
+@see https://leetcode.cn/problems/possible-bipartition/
 """
 
 
 class Solution:
-    def isBipartite(self, graph: List[List[int]]) -> bool:
-        n = len(graph)
-
+    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+        graph = self.build_graph(dislikes, n)
         self.ok = True
         self.visited = {}
         self.colors = {}
-        for v in range(n):
-            if not self.visited.get(v, False):
-                self.colors[v] = False
-                self.traverse(graph, v)
+        for i in range(1, n + 1):
+            if not self.visited.get(i, False):
+                self.colors[i] = False
+                self.traverse(graph, i)
+
         return self.ok
 
     ok = True
     visited = {}
     colors = {}
+
+    def build_graph(self, dislikes, n):
+        graph = [[] for _ in range(n + 1)]
+        for fr, to in enumerate(dislikes):
+            graph[to[1]].append(to[0])
+            graph[to[0]].append(to[1])
+        return graph
 
     def traverse(self, graph, v):
         if not self.ok:
@@ -33,7 +37,7 @@ class Solution:
                 self.colors[g] = not self.colors[v]
                 self.traverse(graph, g)
             else:
-                if self.colors[v] == self.colors[g]:
+                if self.colors[g] == self.colors[v]:
                     self.ok = False
                     return
 
@@ -43,34 +47,41 @@ BFS 版本
 """
 
 
-class Solution1:
-    def isBipartite(self, graph: List[List[int]]) -> bool:
-        n = len(graph)
+class Solution:
+    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+        graph = self.build_graph(dislikes, n)
         self.ok = True
         self.visited = {}
         self.colors = {}
-        queue = []
-        for i in range(n):
+        for i in range(1, n + 1):
             if not self.visited.get(i, False):
                 self.colors[i] = False
                 self.bfs(graph, i)
+
         return self.ok
 
     ok = True
     visited = {}
     colors = {}
 
+    def build_graph(self, dislikes, n):
+        graph = [[] for _ in range(n + 1)]
+        for fr, to in enumerate(dislikes):
+            graph[to[1]].append(to[0])
+            graph[to[0]].append(to[1])
+        return graph
+
     def bfs(self, graph, v):
         queue = [v]
-
+        self.visited[v] = True
         while len(queue) > 0 and self.ok:
             v = queue.pop(0)
-            self.visited[v] = True
             for neighbor in graph[v]:
                 if not self.visited.get(neighbor, False):
                     self.colors[neighbor] = not self.colors[v]
+                    self.visited[neighbor] = True
                     queue.append(neighbor)
                 else:
-                    if self.colors[neighbor] == self.colors[v]:
+                    if self.colors[v] == self.colors[neighbor]:
                         self.ok = False
                         return
