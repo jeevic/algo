@@ -36,3 +36,4 @@ class Solution:
                 if self.colors[v] == self.colors[g]:
                     self.ok = False
                     return
+
