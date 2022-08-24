@@ -22,6 +22,12 @@ def count_leetcode(path):
 
 
 if __name__ == '__main__':
-    path = "."
-    counter = count_leetcode(".")
-    print("做题数量:{}".format(counter))
+    parent =os.path.split(os.path.realpath(__file__))[0];
+    path = os.path.join(parent, "leetcode")
+    leetcode_counter = count_leetcode(path)
+    path = os.path.join(parent, "datastruct")
+    data_struct_counter = count_leetcode(path)
+
+    print("leetcode做题数量:{}".format(leetcode_counter))
+    print("data_struct做题数量:{}".format(data_struct_counter))
+    print("总数量:{}".format(leetcode_counter + data_struct_counter))
