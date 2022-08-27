@@ -4,6 +4,10 @@
 """
 from typing import List
 
+"""
+并查集解决思路
+"""
+
 
 class Solution:
     def equationsPossible(self, equations: List[str]) -> bool:
