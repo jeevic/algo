@@ -1,4 +1,3 @@
-
 class Solution:
     def minFallingPathSum(self, matrix: List[List[int]]) -> int:
         l1 = len(matrix)
@@ -27,4 +26,3 @@ class Solution:
         if j < 0 or j >= l2:
             return sys.maxsize
         return dp[i][j]
-

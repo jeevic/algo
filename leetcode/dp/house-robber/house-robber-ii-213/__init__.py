@@ -16,7 +16,7 @@ class Solution:
         dp_1[1] = nums[0]
 
         for i in range(2, length):
-            dp_1[i] = max(dp_1[i - 2] + nums[i - 1], dp_1[ i -1])
+            dp_1[i] = max(dp_1[i - 2] + nums[i - 1], dp_1[i - 1])
 
         for i in range(2, length + 1):
             dp_0[i] = max(dp_0[i - 2] + nums[i - 1], dp_0[i - 1])

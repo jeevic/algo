@@ -1,11 +1,10 @@
-
 class Solution:
 
     def maxEnvelopes(self, envelopes: List[List[int]]) -> int:
         length = len(envelopes)
         if length == 1:
             return 1
-        envelopes.sort(key=lambda x:x[0])
+        envelopes.sort(key=lambda x: x[0])
 
         dp = [1 for i in range(length)]
         index = 1
@@ -19,5 +18,3 @@ class Solution:
                 j += 1
             index += 1
         return max(dp)
-
-

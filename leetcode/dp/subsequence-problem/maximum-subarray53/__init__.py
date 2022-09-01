@@ -1,8 +1,8 @@
-
 """
   暴力法
   双循环  超时
 """
+
 
 class Solution:
 
@@ -11,7 +11,7 @@ class Solution:
         for k, v in enumerate(nums):
             i = 0
             while i <= k:
-                max_num = max(max_num, sum(nums[i:k+1]))
+                max_num = max(max_num, sum(nums[i:k + 1]))
                 i += 1
         return max_num
 
@@ -23,7 +23,6 @@ class Solution:
 
 
 class Solution1:
-
 
     def maxSubArray(self, nums: List[int]) -> int:
         dp = {}
@@ -42,6 +41,7 @@ class Solution1:
 
         return max_nums
 
+
 """
  动态规划
  dp[i]代表包含 nums[i]的连续序列
@@ -51,7 +51,6 @@ class Solution1:
 
 class Solution2:
 
-
     def maxSubArray(self, nums: List[int]) -> int:
         dp_i_0 = nums[0]
         max_nums = dp_i_0
@@ -59,9 +58,10 @@ class Solution2:
         while i < len(nums):
             dp_i_1 = max(dp_i_0 + nums[i], nums[i])
             max_nums = max(dp_i_1, max_nums)
-            dp_i_0 =dp_i_1
+            dp_i_0 = dp_i_1
             i += 1
         return max_nums
+
 
 """
  前缀和
@@ -71,7 +71,7 @@ class Solution2:
 
 
 class Solution3:
-    
+
     def maxSubArray(self, nums: List[int]) -> int:
         preSum = [0 for i in range(len(nums) + 1)]
         preSum[0] = 0

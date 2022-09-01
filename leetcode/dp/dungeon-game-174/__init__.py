@@ -3,23 +3,24 @@
  动态规划 自顶而下写法
 """
 
+
 class Solution:
 
     def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:
         self.mem = {}
         return self.dp(dungeon, 0, 0)
 
-
     mem = {}
-    def dp(self, grid, i , j):
+
+    def dp(self, grid, i, j):
         m = len(grid)
         n = len(grid[0])
 
         if self.mem.get((i, j), None) is not None:
             return self.mem.get((i, j), None)
         if i == m - 1 and j == n - 1:
-            return  1 if grid[i][j] >= 0 else -grid[i][j] + 1
-        if i == m  or j == n:
+            return 1 if grid[i][j] >= 0 else -grid[i][j] + 1
+        if i == m or j == n:
             return sys.maxsize
         res = min(self.dp(grid, i + 1, j), self.dp(grid, i, j + 1)) - grid[i][j]
         res = res if res > 0 else 1
@@ -30,6 +31,7 @@ class Solution:
 """
 自顶而下 动态规划
 """
+
 
 class Solution:
     def calculateMinimumHP(self, dungeon: List[List[int]]) -> int:

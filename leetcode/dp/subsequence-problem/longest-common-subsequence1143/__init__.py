@@ -22,16 +22,16 @@ class Solution:
             return 0
         if j == len(text2):
             return 0
-        if self.mem.get((i ,j), None) is not None:
-            return self.mem[(i ,j)]
+        if self.mem.get((i, j), None) is not None:
+            return self.mem[(i, j)]
         if text1[i] == text2[j]:
-            self.mem[(i ,j)] = 1 + self.dp(text1, i + 1, text2, j + 1)
+            self.mem[(i, j)] = 1 + self.dp(text1, i + 1, text2, j + 1)
         else:
-            self.mem[(i ,j)] =  max(
-                self.dp(text1, i + 1, text2,  j),
+            self.mem[(i, j)] = max(
+                self.dp(text1, i + 1, text2, j),
                 self.dp(text1, i, text2, j + 1)
             )
-        return self.mem[(i ,j)]
+        return self.mem[(i, j)]
 
 
 """

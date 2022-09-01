@@ -22,4 +22,3 @@ class Solution:
 
                 dp[i][j] = grid[i - 1][j - 1] + min_pre
         return dp[m][n]
-

@@ -23,5 +23,3 @@ class Solution:
                     dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]]
 
         return dp[len(coins)][amount]
-
-

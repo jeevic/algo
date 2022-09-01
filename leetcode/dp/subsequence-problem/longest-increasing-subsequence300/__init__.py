@@ -1,4 +1,3 @@
-
 """
 动态规划
 自底而上求解
@@ -23,9 +22,6 @@ class Solution:
                 j += 1
             index += 1
         return max(dp)
-
-
-
 
 
 """
@@ -65,4 +61,3 @@ class Solution1:
             i += 1
         self.mem[index] = res
         return res
-

@@ -19,17 +19,16 @@ def knapsack(W, N, wt, val):
     for j in range(W + 1):
         dp[0][j] = 0
 
-    for i in range(1, N+1):
-        for j in range(1, W+1):
-            if j - wt[i-1] < 0:
-                dp[i][j] = dp[i-1][j]
+    for i in range(1, N + 1):
+        for j in range(1, W + 1):
+            if j - wt[i - 1] < 0:
+                dp[i][j] = dp[i - 1][j]
             else:
-                dp[i][j] = max(dp[i-1][j - wt[i-1]] + val[i-1], dp[i-1][j])
+                dp[i][j] = max(dp[i - 1][j - wt[i - 1]] + val[i - 1], dp[i - 1][j])
     return dp[N][W]
 
 
 if __name__ == '__main__':
-
     N = 3
     W = 4
     wt = [2, 1, 3]

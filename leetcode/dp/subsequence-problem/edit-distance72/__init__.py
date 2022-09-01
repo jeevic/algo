@@ -47,7 +47,7 @@ class Solution:
 
     def dp(self, word1, i, word2, j):
         if j == len(word2):
-            return  len(word1) - i
+            return len(word1) - i
         if i == len(word1):
             return len(word2) - j
 
@@ -57,15 +57,16 @@ class Solution:
         if word1[i] == word2[j]:
             self.mem[(i, j)] = self.dp(word1, i + 1, word2, j + 1)
         else:
-           self.mem[(i, j)] =  min(
-            # 替换
-            self.dp(word1, i + 1, word2, j + 1),
-            # 插入
-            self.dp(word1, i, word2, j + 1),
-            # 删除
-            self.dp(word1, i + 1, word2, j)
+            self.mem[(i, j)] = min(
+                # 替换
+                self.dp(word1, i + 1, word2, j + 1),
+                # 插入
+                self.dp(word1, i, word2, j + 1),
+                # 删除
+                self.dp(word1, i + 1, word2, j)
             ) + 1
         return self.mem[(i, j)]
+
 
 """
 自底而上 动态规划
@@ -74,7 +75,7 @@ class Solution:
 
 
 class Solution:
-    
+
     def minDistance(self, word1: str, word2: str) -> int:
         lw1 = len(word1)
         lw2 = len(word2)

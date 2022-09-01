@@ -118,4 +118,3 @@ class State:
         self.id = id
         self.cost_from_src = cost_from_src
         self.node_num_from_src = node_num_from_src
-
