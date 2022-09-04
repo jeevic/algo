@@ -1,4 +1,6 @@
 # 410. 分割数组的最大值
+from typing import List
+
 
 class Solution:
     def splitArray(self, nums: List[int], m: int) -> int:

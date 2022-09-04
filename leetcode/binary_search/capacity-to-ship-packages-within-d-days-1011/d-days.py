@@ -1,4 +1,5 @@
 # 1011. 在 D 天内送达包裹的能力
+from typing import List
 
 
 class Solution:
