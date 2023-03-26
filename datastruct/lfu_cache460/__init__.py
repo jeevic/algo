@@ -1,5 +1,8 @@
 
 class LFUCache:
+    """
+    @see  https://mp.weixin.qq.com/s/oXv03m1J8TwtHwMJEZ1ApQ
+    """
     kv_map = {}
     kc_map = {}
     freq_keys_map = {}
@@ -38,6 +41,7 @@ class LFUCache:
         freq_keys.append(key)
         self.freq_keys_map[self.min_freq] = freq_keys
         self.size += 1
+        self.min_freq = 1
         return
 
     def remove_least_freq_key(self):
@@ -64,7 +68,9 @@ class LFUCache:
         self.freq_keys_map[freq] = freq_keys
 
         if len(freq_keys) == 0:
-            self.min_freq = freq + 1
+            del self.freq_keys_map[freq]
+            if self.min_freq == freq:
+                self.min_freq = freq + 1
 
         new_freq_keys = self.freq_keys_map.get(freq + 1, [])
         new_freq_keys.append(key)
