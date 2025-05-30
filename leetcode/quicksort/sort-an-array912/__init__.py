@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
         length = len(nums)
@@ -14,7 +17,7 @@ class Solution:
         self.sorted(nums, p + 1, hi)
 
     def partition(self, nums, lo, hi):
-        p = lo + (hi - lo)// 2
+        p = lo + (hi - lo) // 2
         lc = 0
         i = lo
         while i <= hi:
@@ -39,6 +42,8 @@ class Solution:
 """
 归并排序写法
 """
+
+
 class Solution1:
     def sortArray(self, nums: List[int]) -> List[int]:
         self.sort(nums)

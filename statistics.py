@@ -21,8 +21,8 @@ def count_leetcode(path):
     return count
 
 
-if __name__ == '__main__':
-    parent =os.path.split(os.path.realpath(__file__))[0];
+if __name__ == "__main__":
+    parent = os.path.split(os.path.realpath(__file__))[0]
     path = os.path.join(parent, "leetcode")
     leetcode_counter = count_leetcode(path)
     path = os.path.join(parent, "datastruct")

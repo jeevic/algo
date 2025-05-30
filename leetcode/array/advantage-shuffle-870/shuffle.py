@@ -51,12 +51,13 @@ class Solution2:
         # nums1倒序
         nums1.sort(reverse=True)
         # nums2倒序排列
-        nums2_sorted = sorted(enumerate(nums2), key=lambda x: x[1], reverse=True)
+        nums2_sorted = sorted(
+            enumerate(nums2), key=lambda x: x[1], reverse=True)
 
         result = [0 for i in range(len(nums1))]
         left = 0
         right = len(nums1) - 1
-        for k, v  in nums2_sorted:
+        for k, v in nums2_sorted:
             if v >= nums1[left]:
                 result[k] = nums1[right]
                 right -= 1
